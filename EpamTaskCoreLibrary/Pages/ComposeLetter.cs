@@ -15,7 +15,7 @@ namespace EpamTaskCoreLibrary.Pages
             ActionProvider.NavigateToUrlAndWait(UIMap.composeLetterBaseUrl, 2000);
         }
 
-        public static void WriteLetter(string to, string cc, string bcc, string subject, string text)
+        public static void WriteLetter(string to, string subject, string text)
         {
             ActionProvider.SendKeysXpath(UIMap.composeLetterToXpath, true, to);
             ActionProvider.SendKeysXpath(UIMap.composeLetterSubjectXpath, true, subject);
