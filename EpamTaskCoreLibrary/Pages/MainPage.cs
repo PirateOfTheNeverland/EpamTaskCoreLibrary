@@ -25,5 +25,15 @@ namespace EpamTaskCoreLibrary.Pages
         {
             return ActionProvider.GetTextId(UIMap.commonUserEmailId);
         }
+
+        public static void Logout()
+        {
+            ActionProvider.ClickAndWaitId(UIMap.commonLogoutId, 2000);
+        }
+
+        public static bool IsLoggedOut()
+        {
+            return ActionProvider.IsVisibleId(UIMap.commonLoginId);
+        }
     }
 }

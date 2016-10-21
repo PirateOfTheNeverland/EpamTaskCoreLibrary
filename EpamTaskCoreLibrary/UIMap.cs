@@ -11,6 +11,7 @@ namespace EpamTaskCoreLibrary
         #region Common
         public static string commonUserEmailId = "PH_user-email";
         public static string commonLogoutId = "PH_logoutLink";
+        public static string commonLoginId = "PH_authLink";
         #endregion
 
         #region MainPage

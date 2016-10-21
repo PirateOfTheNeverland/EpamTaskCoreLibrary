@@ -23,7 +23,6 @@ namespace EpamTaskCoreLibrary.Pages
         public static string GetSubjectOfFirstDraftLetter()
         {
             return ActionProvider.ReturnElementFromCollectionXpath(UIMap.draftsListitemXpath, 0).GetAttribute(UIMap.draftsLetterSubjectAttributeName);
-            //return ActionProvider.GetAttributeXpath(UIMap.draftsFirstLetterXpath, UIMap.draftsLetterSubjectAttributeName);
         }
     }
 }
