@@ -1,21 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using EpamTaskTestSuite.DataProviders;
+﻿using EpamTaskTestSuite.DataProviders;
 using EpamTaskTestSuite.Entities;
 using NUnit.Framework;
 
-namespace EpamTaskTestSuite
+namespace EpamTaskTestSuite.Tests
 {
     [TestFixture]
     [TestFixtureSource(typeof(UserProvider), nameof(UserProvider.Users))]
-    public class DraftsVerification
+    public class DraftsVerificationTest
     {
         private User _user;
 
-        public DraftsVerification(User user)
+        public DraftsVerificationTest(User user)
         {
             _user = user;
         }
