@@ -27,13 +27,13 @@ namespace EpamTaskCoreLibrary
         public static void Start()
         {
             ChromeOptions options = new ChromeOptions();
+            options.AddArguments("start-maximized");
             options.AddArguments("-incognito");
             if (driver == null)
             {
                 if (browser == "chrome")
                     driver = new ChromeDriver(options);
             }
-            driver.Manage().Window.Maximize();
         }
 
         /// <summary>
