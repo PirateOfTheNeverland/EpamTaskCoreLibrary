@@ -12,8 +12,9 @@ namespace EpamTaskCoreLibrary
 {
     public static class ActionProvider
     {
-        private static IWebDriver driver;
+        private static IWebDriver driver = null;
         private static string baseURL = "https://mail.ru/";
+        private static string browser = "chrome";
 
         static ActionProvider()
         {
@@ -27,7 +28,12 @@ namespace EpamTaskCoreLibrary
         {
             ChromeOptions options = new ChromeOptions();
             options.AddArguments("-incognito");
-            driver = new ChromeDriver(options);
+            if (driver == null)
+            {
+                if (browser == "chrome")
+                    driver = new ChromeDriver(options);
+            }
+            driver.Manage().Window.Maximize();
         }
 
         /// <summary>

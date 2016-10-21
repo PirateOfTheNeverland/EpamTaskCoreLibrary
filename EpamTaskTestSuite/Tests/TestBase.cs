@@ -13,12 +13,15 @@ namespace EpamTaskTestSuite.Tests
         [OneTimeSetUp]
         public void Init()
         {
-            Console.WriteLine("Run tests");
+            Console.WriteLine("Start test run");
+            EpamTaskCoreLibrary.ActionProvider.Start();
+            EpamTaskCoreLibrary.ActionProvider.NavigateToBase();
         }
 
         [OneTimeTearDown]
         public void TestCleanup()
         {
+            EpamTaskCoreLibrary.ActionProvider.Stop();
             Console.WriteLine("Test run finished");
         }
     }

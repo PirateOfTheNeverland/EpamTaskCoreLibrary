@@ -5,7 +5,7 @@ using NUnit.Framework;
 namespace EpamTaskTestSuite.Tests
 {
     [TestFixture]
-    [TestFixtureSource(typeof(UserProvider), nameof(UserProvider.Users))]
+    [TestFixtureSource(typeof(UserProvider), "Users")]
     public class DraftsVerificationTest
     {
         private User _user;
@@ -18,12 +18,10 @@ namespace EpamTaskTestSuite.Tests
         [SetUp]
         public void SetUp()
         {
-            EpamTaskCoreLibrary.ActionProvider.Start();
-            EpamTaskCoreLibrary.ActionProvider.NavigateToBase();
             // Precon 1. Login
             EpamTaskCoreLibrary.Pages.MainPage.Login(_user.Name, _user.Password, "");
             // Precon 2. Verify that you were successfully logged in
-            Assert.AreEqual($"{_user.Name}@{_user.Domain}", EpamTaskCoreLibrary.Pages.MainPage.GetCurrentUserEmail());
+            Assert.AreEqual(_user.Name + "@" + _user.Domain, EpamTaskCoreLibrary.Pages.MainPage.GetCurrentUserEmail());
         }
 
         [TearDown]
@@ -31,11 +29,10 @@ namespace EpamTaskTestSuite.Tests
         {
             EpamTaskCoreLibrary.Pages.MainPage.Logout();
             Assert.IsTrue(EpamTaskCoreLibrary.Pages.MainPage.IsLoggedOut());
-            EpamTaskCoreLibrary.ActionProvider.Stop();
         }
 
         [Test]
-        [TestCaseSource(typeof(MailProvider), nameof(MailProvider.Mails))]
+        [TestCaseSource(typeof(MailProvider), "Mails")]
         public void VerifySavedLetterMovedToDrafts(Mail email)
         {
             // Step 1. Go to drafts
@@ -55,7 +52,7 @@ namespace EpamTaskTestSuite.Tests
         }
 
         [Test]
-        [TestCaseSource(typeof(MailProvider), nameof(MailProvider.Mails))]
+        [TestCaseSource(typeof(MailProvider), "Mails")]
         public void VerifySavedLetterHasCorrectSubject(Mail email)
         {
             // Step 1. Go to drafts
