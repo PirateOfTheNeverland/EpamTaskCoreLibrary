@@ -26,19 +26,32 @@ namespace EpamTaskTestSuite
         }
 
         [Test]
-        [TestCase("luckythirteen", "l1u2c3k4y5", "mail.ru")]
+        [TestCase("aivanooooov", "123qwe123", "mail.ru")]
         public void Login(string login, string password, string extension)
         {
             // Step 1. Login
             EpamTaskCoreLibrary.Pages.MainPage.Login(login, password, "");
             // Step 2. Verify that you were successfully logged in
             Assert.AreEqual(login + '@' + extension, EpamTaskCoreLibrary.Pages.MainPage.GetCurrentUserEmail());
-            // Step 3. Go to composing new letter
+
+            // Step 3. Go to drafts
+            EpamTaskCoreLibrary.Pages.DraftsPage.Open();
+            // Step 4. Store number of draft letters
+            int count = EpamTaskCoreLibrary.Pages.DraftsPage.GetNumberOfDraftLetters();
+
+            // Step 5. Go to composing new letter
             EpamTaskCoreLibrary.Pages.ComposeLetter.Open();
-            // Step 4. Fill in required fields
-            EpamTaskCoreLibrary.Pages.ComposeLetter.WriteLetter("ivanov@mailtest.ru", "", "", "Subject of letter", "text-text-text");
-            // Step 5. Save to drafts
+            // Step 6. Fill in required fields
+            EpamTaskCoreLibrary.Pages.ComposeLetter.WriteLetter("ivandseqweov@mailtest.ru", "", "", "Subject of letter111", "text-text-text");
+            // Step 7. Save to drafts
             EpamTaskCoreLibrary.Pages.ComposeLetter.SaveLetterToDrafts();
+            // Step 8. Go to drafts
+            EpamTaskCoreLibrary.Pages.DraftsPage.Open();
+            // Step 9. Verify that number of draft letters increased by 1
+            Assert.AreEqual(count + 1, EpamTaskCoreLibrary.Pages.DraftsPage.GetNumberOfDraftLetters());
+
+            // Step 10. Verify subject
+            Assert.AreEqual("Subject of letter111", EpamTaskCoreLibrary.Pages.DraftsPage.GetSubjectOfFirstDraftLetter());
         }
 
     }

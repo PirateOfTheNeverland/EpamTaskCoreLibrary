@@ -32,6 +32,10 @@ namespace EpamTaskCoreLibrary
         #endregion
 
         #region DraftsPage
+        public static string draftsBaseUrl = "https://e.mail.ru/messages/drafts/";
+        public static string draftsListitemXpath = "//a[@class='js-href b-datalist__item__link']";
+        public static string draftsFirstSubjectXpath = "//div[@class='b-datalist__item__subj']";
+        public static string draftsLetterSubjectAttributeName = "data-subject";
         #endregion
     }
 }

@@ -274,6 +274,44 @@ namespace EpamTaskCoreLibrary
         }
 
         /// <summary>
+        /// Gets value of attributed for element by it's id
+        /// </summary>
+        /// <param name="id">Id locator of element</param>
+        /// <param name="attrname">Attribute name</param>
+        /// <returns>Value of attribute</returns>
+        public static string GetAttributeId(string id, string attrname)
+        {
+            try
+            {
+                IWebElement element = driver.FindElement(By.Id(id));
+                return element.GetAttribute(attrname);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Gets value of attributed for element by it's Xpath
+        /// </summary>
+        /// <param name="xpath">Xpath locator of element</param>
+        /// <param name="attrname">Attribute name</param>
+        /// <returns>Value of attribute</returns>
+        public static string GetAttributeXpath(string xpath, string attrname)
+        {
+            try
+            {
+                IWebElement element = driver.FindElement(By.XPath(xpath));
+                return element.GetAttribute(attrname);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        /// <summary>
         /// Returns Url of currently displaying page
         /// </summary>
         /// <returns>Url of currently displaying page</returns>
@@ -282,6 +320,35 @@ namespace EpamTaskCoreLibrary
             try
             {
                 return driver.Url;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Counts elements satisfying given xpath
+        /// </summary>
+        /// <param name="xpath">Xpath template for search</param>
+        /// <returns>Number of elements found by given xpath</returns>
+        public static int CountElementsXpath(string xpath)
+        {
+            try
+            {
+                return driver.FindElements(By.XPath(xpath)).Count;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public static IWebElement ReturnElementFromCollectionXpath(string xpath, int index)
+        {
+            try
+            {
+                return driver.FindElements(By.XPath(xpath)).ElementAt(index);
             }
             catch (Exception ex)
             {

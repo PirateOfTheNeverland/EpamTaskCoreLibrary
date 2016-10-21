@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="EpamTaskCoreLibrary.cs" />
     <Compile Include="Pages\ComposeLetter.cs" />
+    <Compile Include="Pages\DraftsPage.cs" />
     <Compile Include="Pages\MainPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UIMap.cs" />
