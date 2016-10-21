@@ -72,9 +72,27 @@ namespace EpamTaskCoreLibrary
         }
 
         /// <summary>
+        /// Navigates to Url
+        /// </summary>
+        /// <param name="url">Url</param>
+        /// <param name="delay">Time in ms to wait after clicking</param>
+        public static void NavigateToUrlAndWait(string url, int delay)
+        {
+            try
+            {
+                driver.Navigate().GoToUrl(url);
+                System.Threading.Thread.Sleep(delay);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        /// <summary>
         /// Clicks at an element by Id and waits after click
         /// </summary>
-        /// <param name="xpath">Id of element to click at</param>
+        /// <param name="id">Id of element to click at</param>
         /// <param name="delay">Time in ms to wait after clicking</param>
         public static void ClickAndWaitId(string id, int delay)
         {
@@ -110,7 +128,7 @@ namespace EpamTaskCoreLibrary
         /// <summary>
         /// Clicks at an element by Id locator
         /// </summary>
-        /// <param name="xpath">Id locator of element to click at</param>
+        /// <param name="id">Id locator of element to click at</param>
         public static void ClickId(string id)
         {
             try
@@ -142,7 +160,7 @@ namespace EpamTaskCoreLibrary
         /// <summary>
         /// Emulates typing into element
         /// </summary>
-        /// <param name="xpath">Id locator of element</param>
+        /// <param name="id">Id locator of element</param>
         /// <param name="clearInput">If true field will be cleared before sending keys</param>
         /// <param name="text">Text to type</param>
         public static void SendKeysId(string id, bool clearInput, string text)
@@ -184,7 +202,7 @@ namespace EpamTaskCoreLibrary
         /// <summary>
         /// Checks visibility of element
         /// </summary>
-        /// <param name="xpath">Id locator of element</param>
+        /// <param name="id">Id locator of element</param>
         /// <returns>True if element is visible, otherwise false.</returns>
         public static bool IsVisibleId(string id)
         {
@@ -222,7 +240,7 @@ namespace EpamTaskCoreLibrary
         /// <summary>
         /// Retrieves text from element
         /// </summary>
-        /// <param name="xpath">Id locator of element</param>
+        /// <param name="id">Id locator of element</param>
         /// <returns>Text of the element</returns>
         public static string GetTextId(string id)
         {

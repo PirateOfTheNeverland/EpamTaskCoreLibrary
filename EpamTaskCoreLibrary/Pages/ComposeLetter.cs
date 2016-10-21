@@ -12,11 +12,14 @@ namespace EpamTaskCoreLibrary.Pages
 
         public static void Open()
         {
-            ActionProvider.NavigateToUrl(UIMap.composeLetterBaseUrl);
+            ActionProvider.NavigateToUrlAndWait(UIMap.composeLetterBaseUrl, 2000);
         }
 
         public static void WriteLetter(string to, string cc, string bcc, string subject, string text)
         {
+            ActionProvider.SendKeysXpath(UIMap.composeLetterToXpath, true, to);
+            ActionProvider.SendKeysXpath(UIMap.composeLetterSubjectXpath, true, subject);
+            ActionProvider.SendKeysXpath(UIMap.composeLetterTextXpath, true, text);
         }
     }
 }

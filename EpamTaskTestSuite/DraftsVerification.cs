@@ -29,10 +29,14 @@ namespace EpamTaskTestSuite
         [TestCase("luckythirteen", "l1u2c3k4y5", "mail.ru")]
         public void Login(string login, string password, string extension)
         {
-            // Precon 1. Login
-            EpamTaskCoreLibrary.MainPage.Login(login, password, "");
+            // Step 1. Login
+            EpamTaskCoreLibrary.Pages.MainPage.Login(login, password, "");
             // Step 2. Verify that you were successfully logged in
-            Assert.AreEqual(login + '@' + extension, EpamTaskCoreLibrary.MainPage.GetCurrentUserEmail());
+            Assert.AreEqual(login + '@' + extension, EpamTaskCoreLibrary.Pages.MainPage.GetCurrentUserEmail());
+            // Step 3. Go to composing new letter
+            EpamTaskCoreLibrary.Pages.ComposeLetter.Open();
+            // Step 4. Fill in required fields
+            EpamTaskCoreLibrary.Pages.ComposeLetter.WriteLetter("ivanov@mailtest.ru", "", "", "Subject of letter", "text-text-text");
         }
 
     }
