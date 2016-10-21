@@ -37,6 +37,8 @@ namespace EpamTaskTestSuite
             EpamTaskCoreLibrary.Pages.ComposeLetter.Open();
             // Step 4. Fill in required fields
             EpamTaskCoreLibrary.Pages.ComposeLetter.WriteLetter("ivanov@mailtest.ru", "", "", "Subject of letter", "text-text-text");
+            // Step 5. Save to drafts
+            EpamTaskCoreLibrary.Pages.ComposeLetter.SaveLetterToDrafts();
         }
 
     }

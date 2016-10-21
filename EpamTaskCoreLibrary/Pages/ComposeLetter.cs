@@ -19,7 +19,13 @@ namespace EpamTaskCoreLibrary.Pages
         {
             ActionProvider.SendKeysXpath(UIMap.composeLetterToXpath, true, to);
             ActionProvider.SendKeysXpath(UIMap.composeLetterSubjectXpath, true, subject);
-            ActionProvider.SendKeysXpath(UIMap.composeLetterTextXpath, true, text);
+            ActionProvider.ClickAndWaitXpath(UIMap.composeLetterSwitchToSimpleTextLayoutXpath, 500);
+            ActionProvider.SendKeysXpath(UIMap.composeLetterSimpleTextXpath, true, text);
+        }
+
+        public static void SaveLetterToDrafts()
+        {
+            ActionProvider.ClickAndWaitXpath(UIMap.composeLetterSaveDraftsXpath, 1000);
         }
     }
 }

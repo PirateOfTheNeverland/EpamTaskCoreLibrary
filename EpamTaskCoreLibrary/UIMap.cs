@@ -25,7 +25,10 @@ namespace EpamTaskCoreLibrary
         public static string composeLetterBaseUrl = "https://e.mail.ru/compose/";
         public static string composeLetterToXpath = "//textarea[@data-original-name='To']";
         public static string composeLetterSubjectXpath = "//input[@name='Subject']";
-        public static string composeLetterTextXpath = "";
+        public static string composeLetterSimpleTextXpath = "//textarea[@name='Body']";
+        public static string composeLetterSwitchToSimpleTextLayoutXpath = "//span[contains(text(), 'Убрать оформление')]";
+        public static string composeLetterRichTextXpath = "//body[@id='tinymce']";
+        public static string composeLetterSaveDraftsXpath = "//span[contains(text(), 'Сохранить')]";
         #endregion
 
         #region DraftsPage
